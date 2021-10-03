@@ -4,8 +4,8 @@ DROP TABLE merchants;
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
-    type VARCHAR(255),
-    active 
+    spending_type VARCHAR(255),
+    active BOOLEAN
 );
 
 CREATE TABLE merchants (
@@ -16,7 +16,7 @@ CREATE TABLE merchants (
 
 CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
-    amount INT,
+    amount FLOAT,
     tag_id INT REFERENCES tags(id) ON DELETE CASCADE,
     merchant_id INT REFERENCES merchants(id) ON DELETE CASCADE
 );
