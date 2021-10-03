@@ -21,14 +21,14 @@ def update(transaction):
 
 def select_all():
     transactions = []
-    sql = "SELECT * FROM visits"
+    sql = "SELECT * FROM transactions"
     results = run_sql(sql)
 
     for row in results:
         tag = tag_repository.select(row['tag_id'])
         merchant = merchant_repository.select(row['merchant_id'])
         transaction = Transaction(row['amount'], tag, merchant, row['id'])
-        transactions.append(0, transaction)
+        transactions.append(transaction)
     return transactions
 
 

@@ -20,7 +20,7 @@ def update(merchant):
 
 def select(id):
     merchant = None
-    sql = "SELECT * FROM merchant WHERE id = %s"
+    sql = "SELECT * FROM merchants WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 

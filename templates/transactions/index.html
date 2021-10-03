@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<table>
+    <tr>
+        <th>AMOUNT</th>
+        <th>TYPE</th>
+        <th>MERCHANT</th>
+    </tr>
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.tag.spending_type }}</td>
+        <td>{{ transaction.merchant.name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button class="transactions--button">
+    <a href="/transactions/new">ADD NEW TRANSACTION</a>
+</button>
+<button class="transactions--button">
+    <a href="/transactions/edit">EDIT A TRANSACTION</a>
+</button>
 {% endblock %}

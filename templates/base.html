@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémoney</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='button.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     
@@ -19,7 +21,7 @@
                     <a href="/transactions">Transactions</a>
                 </li>
                 <li>
-                    <a href="/tags">Spending Tags</a>
+                    <a href="/tags">Spending Type</a>
                 </li>
                 <li>
                     <a href="/merchants">Merchants</a>
@@ -28,10 +30,10 @@
         </nav>
     </header>
     <hr class="red-line">
-        <section class="content">
+    <section class="content">
             {% block content %}
 
             {% endblock %}
-        </section>
+    </section>
 </body>
 </html>
