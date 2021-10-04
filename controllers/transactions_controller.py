@@ -13,8 +13,13 @@ def transactions():
     return render_template("transactions/index.html", transactions=transactions)
 
 @transactions_blueprint.route("/transactions/new")
-def add_transaction():
-    return render_template("transactions/new.html")
+def new_transaction():
+    tags = tag_repository.select_all()
+    merchants = merchant_repository.select_all()
+    return render_template("transactions/new.html", all_tags=tags, all_merchants=merchants)
+
+# @transactions_blueprint.route("/transactions", methods=['POST']) 
+# def create_transaction():
 
 @transactions_blueprint.route("/transactions/edit")
 def edit_transaction():

@@ -8,7 +8,6 @@ body > header {
     background-color: rgb(252, 222, 75);
     height: 75px;
     font-size: large;
-    vertical-align: baseline;
 }
 
 #top-bar {

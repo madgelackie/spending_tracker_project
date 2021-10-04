@@ -1,5 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-add transaction form
+<form action="/transactions", method='post'>
+<div>
+    <label for="amount">Amount (¥) : </label> 
+    <input type="number" step="100" id="amount" name="amount">
+</div>
+<br>
+<div>
+    <label for="spending_type">Choose spending type : </label> 
+    <select id="spending_type" name="spending_type">
+        <option value=""></option>
+        {% for tag in all_tags %}
+        <option value="{{ tag.id }}">{{ tag.spending_type }}</option>
+        {% endfor %}
+    </select>
+</div>
+<br>
+<div>
+    <label for="merchant">Choose merchant : </label> 
+    <select id="merchant" name="merchant">
+        <option value=""></option>
+        {% for merchant in all_merchants %}
+        <option value="{{ merchant.id }}">{{ merchant.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+<br>
+<button type="submit">SUBMIT</button>
 {% endblock %}

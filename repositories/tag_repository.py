@@ -27,3 +27,14 @@ def select(id):
     if result is not None:
         tag = Tag(result['spending_type'], result['active'], result['id'])
     return tag
+
+def select_all():
+    tags = []
+
+    sql = "SELECT * FROM tags"
+    results = run_sql(sql)
+
+    for row in results:
+        tag = Tag(row['spending_type'], row['active'], row['id'])
+        tags.append(tag)
+    return tags

@@ -27,3 +27,14 @@ def select(id):
     if result is not None:
         merchant = Merchant(result['name'], result['active'], result['id'])
     return merchant
+
+def select_all():
+    merchants = []
+
+    sql = "SELECT * FROM merchants"
+    results = run_sql(sql)
+
+    for row in results:
+        merchant = Merchant(row['name'], row['active'], row['id'])
+        merchants.append(merchant)
+    return merchants
