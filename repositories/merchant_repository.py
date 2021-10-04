@@ -31,10 +31,8 @@ def select(id):
 
 def select_all():
     merchants = []
-
     sql = "SELECT * FROM merchants"
     results = run_sql(sql)
-
     for row in results:
         merchant = Merchant(row['name'], row['active'], row['id'])
         merchants.append(merchant)

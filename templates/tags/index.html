@@ -2,8 +2,6 @@
 
 {% block content %}
 <section class="centred--content">
-<button class="add--tag--button">
-    <a href="/tags/new">ADD NEW SPENDING TAG</a></button>
     <h3>Current tags :</h3>
     <table>
         <tr>
@@ -24,25 +22,9 @@
             </td>
         </tr>    
         {% endfor %}
-    </div>
-
-
-
-</div>
+    </table>
+    <button class="add--tag--button">
+        <a href="/tags/new">ADD NEW SPENDING TAG</a></button>
 </section>
 {% endblock %}
 
-<!-- <table>
-    <tr>
-        <th>SPENDING TYPE</th>
-        <th>ACTIVE</th>
-        <th>EDIT</th>
-        <th></th>
-    </tr>
-    {% for tag in all_tags %}
-    <tr>
-        <td>{{tag.spending_type}}</td>
-        <td>{{tag.active}}</td>
-    </tr>    
-    {% endfor %}
-</table> -->

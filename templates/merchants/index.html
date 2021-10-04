@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="centred--content">
+    <h3>Current merchants :</h3>
+        <table>
+            <tr>
+                <th>NAME</th>
+                <th>ACTIVE</th>
+                <th>EDIT</th>
+            </tr>
+                {% for merchant in all_merchants %}
+            <tr>
+                <td>{{merchant.name}}</td>
+                <td>{% if merchant.active == True %}Yes
+                    {% elif merchant.active == False %}No{% endif %}
+                </td>
+                <td>
+                    <form class="edit-form" action="/merchants/{{merchant.id}}/edit" method="POST">
+                    <button class="edit--button">&#10003;</button>
+                    </form>
+                </td>
+            </tr>    
+            {% endfor %}
+        </table>  
+        <button class="add--tag--button">
+            <a href="/merchants/new">ADD NEW MERCHANT</a>
+        </button> 
+</section>
+{% endblock %}
