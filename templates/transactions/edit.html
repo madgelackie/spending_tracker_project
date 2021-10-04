@@ -4,7 +4,7 @@
 <form action="/transactions/{{ transaction.id }}", method='post'>
     <div>
         <label for="amount">Amount (¥) : </label> 
-        <input type="number" step="100" id="amount" name="amount" value="{{transaction.amount}}">
+        <input type="number" min="0" step="100" id="amount" name="amount" value="{{transaction.amount}}">
     </div>
     <br>
     <div>

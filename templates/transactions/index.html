@@ -11,7 +11,7 @@
     </tr>
     {% for transaction in transactions %}
     <tr>
-        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.amount }}¥</td>
         <td>{{ transaction.tag.spending_type }}</td>
         <td>{{ transaction.merchant.name }}</td>
         <td>
@@ -27,6 +27,7 @@
     </tr>
     {% endfor %}
 </table>
+<p>Total spend = {{total_spend}}</p>
 <button class="transactions--button">
     <a href="/transactions/new">ADD NEW TRANSACTION</a>
 </button>

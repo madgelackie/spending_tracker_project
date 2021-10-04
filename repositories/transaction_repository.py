@@ -49,6 +49,14 @@ def select_all():
         transactions.insert(0, transaction)
     return transactions
 
+def total_spending():
+    total_spend = 0
+    transactions = select_all()
+    for transaction in transactions:
+        total_spend += transaction.amount
+    return total_spend
+
+
 
 
 
