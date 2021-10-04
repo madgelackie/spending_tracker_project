@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<button class="add--tag--button">ADD NEW SPENDING TAG</button>
+<section class="centred--content">
+<button class="add--tag--button">
+    <a href="/tags/new">ADD NEW SPENDING TAG</a></button>
 <div class="tag--lists">
     <div id="active--tags">
-        <ul>
-            <li>1</li>
-            <li>2</li>
+        <h3>Current tags :</h3>
+        {% for tag in all_tags %}
+        {% if tag.active == True %}
+        <h4>{{tag.spending_type}}</h4>
+        {% endif %}
+        {% endfor %}
         </ul>
     </div>
     <div id="inactive--tags">
         <ul>
-            <li>3</li>
-            <li>4</li>
+            {% for tag in all_tags %}
+            {% if tag.active != True %}
+            <li>{{tag.spending_type}}</li>
+            {% endif %}
+            {% endfor %}
         </ul>
     </div>
 
 
 </div>
-
+</section>
 {% endblock %}
 
 <!-- <table>

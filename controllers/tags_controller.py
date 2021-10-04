@@ -11,4 +11,16 @@ tags_blueprint = Blueprint("tags", __name__)
 def show_all():
     tags = tag_repository.select_all()
     return render_template("tags/index.html", all_tags=tags)
-    
+
+# form to add new tag
+@tags_blueprint.route("/tags/new")
+def new_tag():
+    return render_template("tags/new.html")
+
+# create new tag once form submitted
+@tags_blueprint.route("/tags", methods=['POST'])
+def create_tag():
+    spending_type = request.form['tag']
+    tag = Tag(spending_type)
+    tag_repository.save(tag)
+    return redirect("/tags")

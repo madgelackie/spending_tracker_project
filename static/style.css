@@ -44,3 +44,9 @@ body > header {
 .tag--lists {
     display: flex;
 }
+
+.centred--content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
