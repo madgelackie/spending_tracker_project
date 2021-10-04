@@ -10,3 +10,9 @@ th, td {
     padding: 10px;
     text-align: center;
 }
+
+.spend--box {
+    background-color: rgb(85, 117, 211);
+    color: white;
+    font-size: larger;
+}

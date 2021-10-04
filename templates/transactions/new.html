@@ -12,7 +12,9 @@
     <select id="spending_type" name="spending_type">
         <option value=""></option>
         {% for tag in all_tags %}
-        <option value="{{ tag.id }}">{{ tag.spending_type }}</option>
+        <option value="{{ tag.id }}">
+        {% if tag.active == True %}    
+        {{ tag.spending_type }}{% endif %}</option>
         {% endfor %}
     </select>
 </div>
@@ -22,7 +24,7 @@
     <select id="merchant" name="merchant">
         <option value=""></option>
         {% for merchant in all_merchants %}
-        <option value="{{ merchant.id }}">{{ merchant.name }}</option>
+        <option value="{{ merchant.id }}"> {% if merchant.active == True %}{{ merchant.name }}{% endif %}</option>
         {% endfor %}
     </select>
 </div>
