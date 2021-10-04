@@ -28,7 +28,7 @@ def select_all():
         tag = tag_repository.select(row['tag_id'])
         merchant = merchant_repository.select(row['merchant_id'])
         transaction = Transaction(row['amount'], tag, merchant, row['id'])
-        transactions.append(transaction)
+        transactions.insert(0, transaction)
     return transactions
 
 

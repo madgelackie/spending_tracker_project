@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -12,15 +13,31 @@ def transactions():
     transactions = transaction_repository.select_all()
     return render_template("transactions/index.html", transactions=transactions)
 
+# takes user to form to add new transaction
 @transactions_blueprint.route("/transactions/new")
 def new_transaction():
     tags = tag_repository.select_all()
     merchants = merchant_repository.select_all()
     return render_template("transactions/new.html", all_tags=tags, all_merchants=merchants)
 
-# @transactions_blueprint.route("/transactions", methods=['POST']) 
-# def create_transaction():
+# route after pressing submit on 'add new transaction' page, to pull info from the form
+@transactions_blueprint.route("/transactions", methods=['POST']) 
+def create_transaction():
+    amount = request.form['amount']
+    tag_id = request.form['spending_type']
+    merchant_id = request.form['merchant']
+    tag = tag_repository.select(tag_id)
+    merchant = merchant_repository.select(merchant_id)
+    transaction = Transaction(amount, tag, merchant)
+    transaction_repository.save(transaction)
+    return redirect('/transactions')
 
+
+# takes user to form to edit transaction
 @transactions_blueprint.route("/transactions/edit")
 def edit_transaction():
-    return render_template("transactions/edit.html")
+        return render_template("transactions/edit.html")
+
+# updates the task editted in /transactions/edit form
+# @transactions_blueprint.route("/transactions/<id>")
+# def 
