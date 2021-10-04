@@ -1,4 +1,3 @@
-import re
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -33,11 +32,27 @@ def create_transaction():
     return redirect('/transactions')
 
 
-# takes user to form to edit transaction
-@transactions_blueprint.route("/transactions/edit")
-def edit_transaction():
-        return render_template("transactions/edit.html")
+# takes user to form of selected transaction, to edit transaction
+@transactions_blueprint.route("/transactions/<id>/edit", methods=['GET', 'POST'])
+def edit_transaction(id):
+    transaction = transaction_repository.select(id)
+    tags = tag_repository.select_all()
+    merchants = merchant_repository.select_all()
+    return render_template("/transactions/edit.html", transaction=transaction, all_tags=tags, all_merchants=merchants)
 
-# updates the task editted in /transactions/edit form
-# @transactions_blueprint.route("/transactions/<id>")
-# def 
+# updates the task edited in /transactions/edit form
+@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
+def update_transaction(id):
+    amount = request.form['amount']
+    tag_id = request.form['tag']
+    merchant_id = request.form['merchant']
+    tag = tag_repository.select(tag_id)
+    merchant = merchant_repository.select(merchant_id)
+    transaction = Transaction(amount, tag, merchant)
+    transaction_repository.update(transaction)
+    return redirect('/transactions')
+
+@transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
+def delete_transaction(id):
+    transaction_repository.delete(id)
+    return redirect("/transactions")

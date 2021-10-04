@@ -14,12 +14,16 @@
         <td>{{ transaction.amount }}</td>
         <td>{{ transaction.tag.spending_type }}</td>
         <td>{{ transaction.merchant.name }}</td>
-        <td><button class="edit--button">
-            <a href="/transactions/edit">&#10003;</a>
-        </button></td>
-        <td><button class="delete--button">
-            <a href="/transactions/<id>">&#10007;</a>
-        </button></td>
+        <td>
+            <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="POST">
+            <button class="edit--button">&#10003;</button>
+            </form>
+        </td>
+        <td>
+            <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
+            <button class="delete--button">&#10007;</button>
+            </form>
+        </td>
     </tr>
     {% endfor %}
 </table>

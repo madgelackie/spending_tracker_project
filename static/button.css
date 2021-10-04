@@ -48,3 +48,14 @@
     background-color: red;
 }
 
+.add--tag--button {
+    margin-top: 15px;
+    border-color: royalblue;
+    background-color: rgb(252, 222, 75);
+    width: 50%;
+    height: 50px;
+    font-family: 'Montserrat';
+    font-size: large;
+
+}
+

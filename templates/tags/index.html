@@ -1,5 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-testing toot
+<button class="add--tag--button">ADD NEW SPENDING TAG</button>
+<div class="tag--lists">
+    <div id="active--tags">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+        </ul>
+    </div>
+    <div id="inactive--tags">
+        <ul>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+
+</div>
+
 {% endblock %}
+
+<!-- <table>
+    <tr>
+        <th>SPENDING TYPE</th>
+        <th>ACTIVE</th>
+        <th>EDIT</th>
+        <th></th>
+    </tr>
+    {% for tag in all_tags %}
+    <tr>
+        <td>{{tag.spending_type}}</td>
+        <td>{{tag.active}}</td>
+    </tr>    
+    {% endfor %}
+</table> -->

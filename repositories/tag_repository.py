@@ -14,7 +14,7 @@ def delete_all():
     run_sql(sql)
 
 def update(tag):
-    sql = "UPDATE tags SET (tag.spending_type, tag.active) = (%s, %s) WHERE id = %s"
+    sql = "UPDATE tags SET (spending_type, active) = (%s, %s) WHERE id = %s"
     values = [tag.spending_type, tag.active, tag.id]
     run_sql(sql, values)
 

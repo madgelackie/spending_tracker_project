@@ -40,3 +40,7 @@ body > header {
 .content {
     padding-top: 10px;
 }
+
+.tag--lists {
+    display: flex;
+}
