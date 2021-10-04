@@ -41,9 +41,6 @@ body > header {
     padding-top: 10px;
 }
 
-.tag--lists {
-    display: flex;
-}
 
 .centred--content {
     margin-left: auto;

@@ -43,12 +43,13 @@ def edit_transaction(id):
 # updates the task edited in /transactions/edit form
 @transactions_blueprint.route("/transactions/<id>", methods=['POST'])
 def update_transaction(id):
+    print(request.form)
     amount = request.form['amount']
     tag_id = request.form['tag']
     merchant_id = request.form['merchant']
     tag = tag_repository.select(tag_id)
     merchant = merchant_repository.select(merchant_id)
-    transaction = Transaction(amount, tag, merchant)
+    transaction = Transaction(amount, tag, merchant, id)
     transaction_repository.update(transaction)
     return redirect('/transactions')
 

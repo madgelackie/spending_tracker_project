@@ -6,7 +6,8 @@ def save(merchant):
     sql = "INSERT INTO merchants (name, active) VALUES ( %s, %s ) RETURNING id"
     values = [merchant.name, merchant.active]
     results = run_sql(sql, values)
-    merchant.id = results[0]['id']
+    id = results[0]['id']
+    merchant.id = id
     return merchant
 
 def delete_all():

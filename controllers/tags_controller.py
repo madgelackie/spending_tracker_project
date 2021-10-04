@@ -21,6 +21,11 @@ def new_tag():
 @tags_blueprint.route("/tags", methods=['POST'])
 def create_tag():
     spending_type = request.form['tag']
-    tag = Tag(spending_type)
+    active = request.form['active']
+    if request.form['active'] == 'yes':
+        active = True
+    elif request.form['active'] == 'no':
+        active = False
+    tag = Tag(spending_type, active)
     tag_repository.save(tag)
     return redirect("/tags")

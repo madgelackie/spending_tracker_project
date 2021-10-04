@@ -10,7 +10,6 @@
     <div>
         <label for="tag">Update spending type : </label> 
         <select id="tag" name="tag">
-            <option>{{transaction.tag.spending_type}}</option>
             {% for tag in all_tags %}
             <option value="{{ tag.id }}">{{ tag.spending_type }}</option>
             {% endfor %}
@@ -20,7 +19,6 @@
     <div>
         <label for="merchant">Update merchant : </label> 
         <select id="merchant" name="merchant">
-            <option>{{transaction.merchant.name}}</option>
             {% for merchant in all_merchants %}
             <option value="{{ merchant.id }}">{{ merchant.name }}</option>
             {% endfor %}

@@ -8,7 +8,8 @@ def save(transaction):
     sql = "INSERT INTO transactions (amount, tag_id, merchant_id) VALUES (%s, %s, %s) RETURNING id"
     values = [transaction.amount, transaction.tag.id, transaction.merchant.id]
     results = run_sql(sql, values)
-    transaction.id = results[0]['id']
+    id = results[0]['id']
+    transaction.id = id
     return transaction
 
 def delete_all():
@@ -20,7 +21,7 @@ def delete(id):
     run_sql(sql, values)
 
 def update(transaction):
-    sql = "UPDATE transactions (amount, tag_id, merchant_id) WHERE id = %s"
+    sql = "UPDATE transactions SET (amount, tag_id, merchant_id) = (%s, %s, %s) WHERE id = %s"
     values = [transaction.amount, transaction.tag.id, transaction.merchant.id, transaction.id]
     run_sql(sql, values)
 

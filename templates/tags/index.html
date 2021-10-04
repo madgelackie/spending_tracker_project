@@ -4,25 +4,28 @@
 <section class="centred--content">
 <button class="add--tag--button">
     <a href="/tags/new">ADD NEW SPENDING TAG</a></button>
-<div class="tag--lists">
-    <div id="active--tags">
-        <h3>Current tags :</h3>
-        {% for tag in all_tags %}
-        {% if tag.active == True %}
-        <h4>{{tag.spending_type}}</h4>
-        {% endif %}
-        {% endfor %}
-        </ul>
-    </div>
-    <div id="inactive--tags">
-        <ul>
+    <h3>Current tags :</h3>
+    <table>
+        <tr>
+            <th>SPENDING TYPE</th>
+            <th>ACTIVE</th>
+            <th>EDIT</th>
+        </tr>
             {% for tag in all_tags %}
-            {% if tag.active != True %}
-            <li>{{tag.spending_type}}</li>
-            {% endif %}
-            {% endfor %}
-        </ul>
+        <tr>
+            <td>{{tag.spending_type}}</td>
+            <td>{% if tag.active == True %}Yes
+                {% elif tag.active == False %}No{% endif %}
+            </td>
+            <td>
+                <form class="edit-form" action="/tags/{{tag.id}}/edit" method="POST">
+                <button class="edit--button">&#10003;</button>
+                </form>
+            </td>
+        </tr>    
+        {% endfor %}
     </div>
+
 
 
 </div>
