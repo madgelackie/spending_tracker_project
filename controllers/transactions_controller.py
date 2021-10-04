@@ -7,6 +7,7 @@ import repositories.merchant_repository as merchant_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
+# show all transactions
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
@@ -43,7 +44,6 @@ def edit_transaction(id):
 # updates the task edited in /transactions/edit form
 @transactions_blueprint.route("/transactions/<id>", methods=['POST'])
 def update_transaction(id):
-    print(request.form)
     amount = request.form['amount']
     tag_id = request.form['tag']
     merchant_id = request.form['merchant']

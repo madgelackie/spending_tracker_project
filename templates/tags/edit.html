@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/tags/{{ tag.id }}", method='post'>
+<div>
+    <label for="spending-tag">Edit spending type : </label>
+    <input class="form--box" type="text" id="spending-tag" name="spending-tag" value="{{tag.spending_type}}"" required>
+</div>
+<br>
+<div>
+    <label for="active">Active? </label>
+    <select class="form--box" id="active" name="active">
+        <option value="true">yes</option>
+        <option value="false">no</option>
+    </select>
+</div>
+<br>
+<button class="submit--button" type="submit">UPDATE</button>
+</form>
+
+{% endblock %}
