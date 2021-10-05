@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="/limits", method='post'>
+        <div>
+            <label for="spending-limit">Set your spending limit (¥) : </label> 
+            <input class="form--box" type="number" step="100" id="spending-limit" name="spending-limit" placeholder="select amount">
+        </div>
+        <br>
+        <div>
+            <label for="notification-point">Notifiation point (i.e when you want us to notify you) (¥) :</label> 
+            <input class="form--box" type="number" step="100" id="notification-point" name="notification-point" placeholder="select amount">    
+        </div>
+        <br>
+        <button class="submit--button" type="submit">SUBMIT</button>
+    </form>
+{% endblock %}

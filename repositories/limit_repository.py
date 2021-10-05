@@ -3,8 +3,8 @@ from db.run_sql import run_sql
 from models.limit import Limit
 
 def save(limit):
-    sql = "INSERT INTO limits (spending_limit, notification_point) VAULES ( %s, %s) RETURNING id"
-    values = [limit.spending_limit, limit.notifcation_point]
+    sql = "INSERT INTO limits (spending_limit, notification_point) VALUES ( %s, %s) RETURNING id"
+    values = [limit.spending_limit, limit.notification_point]
     results = run_sql(sql, values)
     id = results[0]['id']
     limit.id = id
@@ -35,3 +35,11 @@ def select_all():
         limit = Limit(row['spending_limit'], row['notification_point'], row['id'])
         limits.append(limit)
     return limits
+
+def select_last():
+    limit = None
+    sql = "SELECT * FROM limits WHERE id=(SELECT max(id) FROM limits)"
+    result = run_sql(sql)
+    if result is not None:
+        limit = Limit(result['spending_limit'], result['notification_point'], result['id'])
+    return limit

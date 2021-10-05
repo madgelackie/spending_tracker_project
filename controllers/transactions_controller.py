@@ -4,6 +4,7 @@ from models.transaction import Transaction
 import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
+import repositories.limit_repository as limit_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
@@ -74,20 +75,16 @@ def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
 
-# @transactions_blueprint.route("/", methods=['POST'])
-# def set_limits():
-#     print(request.form)
-#     spending_limit = request.form['spending-limit']
-#     notification_limit = request.form['notification-limit']
-#     total_spend = transaction_repository.total_spending()
-#     print(total_spend)
-#     at_limit = False
-#     print(at_limit)
-#     if total_spend >= int(notification_limit):
-#         at_limit = True
-#     print(at_limit)
-#     transactions = transaction_repository.select_all()
-#     total = transaction_repository.total_spending()
-#     return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
+@transactions_blueprint.route("/", methods=['POST'])
+def limit_notification():
+    total_spend = transaction_repository.total_spending()
+    limit = limit_repository.select_last()
+    at_limit = False
+    if total_spend >= limit.notification_point:
+        at_limit = True
+    print(at_limit)
+    transactions = transaction_repository.select_all()
+    total = transaction_repository.total_spending()
+    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 
