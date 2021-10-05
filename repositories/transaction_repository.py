@@ -5,8 +5,8 @@ import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
 
 def save(transaction):
-    sql = "INSERT INTO transactions (amount, tag_id, merchant_id) VALUES (%s, %s, %s) RETURNING id"
-    values = [transaction.amount, transaction.tag.id, transaction.merchant.id]
+    sql = "INSERT INTO transactions (amount, tag_id, merchant_id, date) VALUES (%s, %s, %s, %s) RETURNING id"
+    values = [transaction.amount, transaction.tag.id, transaction.merchant.id, transaction.date]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -21,8 +21,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(transaction):
-    sql = "UPDATE transactions SET (amount, tag_id, merchant_id) = (%s, %s, %s) WHERE id = %s"
-    values = [transaction.amount, transaction.tag.id, transaction.merchant.id, transaction.id]
+    sql = "UPDATE transactions SET (amount, tag_id, merchant_id, date) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [transaction.amount, transaction.tag.id, transaction.merchant.id, transaction.date, transaction.id]
     run_sql(sql, values)
 
 def select(id):
@@ -34,7 +34,7 @@ def select(id):
     if result is not None:
         tag = tag_repository.select(result['tag_id'])
         merchant = merchant_repository.select(result['merchant_id'])
-        transaction = Transaction(result['amount'], tag, merchant, result['id'])
+        transaction = Transaction(result['amount'], tag, merchant, result['date'], result['id'])
     return transaction
 
 def select_all():
@@ -45,7 +45,7 @@ def select_all():
     for row in results:
         tag = tag_repository.select(row['tag_id'])
         merchant = merchant_repository.select(row['merchant_id'])
-        transaction = Transaction(row['amount'], tag, merchant, row['id'])
+        transaction = Transaction(row['amount'], tag, merchant, row['date'], row['id'])
         transactions.insert(0, transaction)
     return transactions
 

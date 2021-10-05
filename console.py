@@ -35,10 +35,10 @@ merchant_repository.save(merchant3)
 merchant4 = Merchant('Pokédex')
 merchant_repository.save(merchant4)
 
-transaction1 = Transaction(2500, tag1, merchant1)
+transaction1 = Transaction(2500, tag1, merchant1, '20200115')
 transaction_repository.save(transaction1)
 
-transaction2 = Transaction(300, tag2, merchant4)
+transaction2 = Transaction(300, tag2, merchant4, '20210205')
 transaction_repository.save(transaction2)
 
 

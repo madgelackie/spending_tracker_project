@@ -6,6 +6,7 @@
         <th>AMOUNT</th>
         <th>TYPE</th>
         <th>MERCHANT</th>
+        <th>DATE</th>
         <th>EDIT</th>
         <th>DELETE</th>
     </tr>
@@ -14,6 +15,7 @@
         <td>{{ transaction.amount }}¥</td>
         <td>{{ transaction.tag.spending_type }}</td>
         <td>{{ transaction.merchant.name }}</td>
+        <td>{{ transaction.date }}</td>
         <td>
             <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="POST">
             <button class="edit--button">&#10003;</button>
