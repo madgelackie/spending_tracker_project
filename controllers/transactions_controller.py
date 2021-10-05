@@ -22,6 +22,13 @@ def transactions_by_date():
     total = transaction_repository.total_spending()
     return render_template("transactions/date.html", transactions=transactions, total_spend=total)
 
+# show all transactions sorted by amount
+@transactions_blueprint.route("/transactions/sortby_amount")
+def transactions_by_amount():
+    transactions = transaction_repository.select_all_by_amount()
+    total = transaction_repository.total_spending()
+    return render_template("transactions/amount.html", transactions=transactions, total_spend=total)
+
 # takes user to form to add new transaction
 @transactions_blueprint.route("/transactions/new")
 def new_transaction():

@@ -74,6 +74,17 @@ def select_all_by_date():
         transaction = Transaction(row['amount'], tag, merchant, row['date'], row['id'])
         transactions.append(transaction)
     return transactions
+
+def select_all_by_amount():
+    transactions = []
+    sql = "SELECT * FROM transactions ORDER BY amount DESC"
+    results = run_sql(sql)
+    for row in results:
+        tag = tag_repository.select(row['tag_id'])
+        merchant = merchant_repository.select(row['merchant_id'])
+        transaction = Transaction(row['amount'], tag, merchant, row['date'], row['id'])
+        transactions.append(transaction)
+    return transactions
         
 
 

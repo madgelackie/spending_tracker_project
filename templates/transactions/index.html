@@ -3,10 +3,16 @@
 {% block content %}
 <table>
     <tr>
-        <th>AMOUNT</th>
+        <th class="tooltip">
+            <a href="/transactions/sortby_amount">AMOUNT</a>
+            <span class="tooltiptext">Sort by amount</span>
+        </th>
         <th>TYPE</th>
         <th>MERCHANT</th>
-        <th>DATE</th>
+        <th class="tooltip">
+            <a href="/transactions/sortby_date">DATE</a>
+            <span class="tooltiptext">Sort by date</span>
+        </th>
         <th>EDIT</th>
         <th>DELETE</th>
     </tr>
@@ -32,13 +38,11 @@
 <div class="spend-box">
     <p id="box1">{{total_spend}}¥</p>
     <p id="box2">TOTAL SPEND</p>
+    
 </div>
 
 <button class="transactions--button">
     <a href="/transactions/new">ADD NEW TRANSACTION</a>
-</button>
-<button class="transactions--button">
-    <a href="/transactions/sortby_date">sort by date</a>
 </button>
 
 {% endblock %}
