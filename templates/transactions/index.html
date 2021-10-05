@@ -24,12 +24,12 @@
         <td>{{ transaction.date }}</td>
         <td>
             <form class="edit-form" action="/transactions/{{transaction.id}}/edit" method="POST">
-            <button class="edit--button">&#10003;</button>
+            <button class="edit-button">&#10003;</button>
             </form>
         </td>
         <td>
             <form class="delete-form" action="/transactions/{{transaction.id}}/delete" method="POST">
-            <button class="delete--button">&#10007;</button>
+            <button class="delete-button">&#10007;</button>
             </form>
         </td>
     </tr>
@@ -41,7 +41,7 @@
     
 </div>
 
-<button class="transactions--button">
+<button class="transactions-button">
     <a href="/transactions/new">ADD NEW TRANSACTION</a>
 </button>
 {% if at_limit == True %}

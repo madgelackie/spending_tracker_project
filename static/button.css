@@ -5,7 +5,7 @@
     font-size: large;
 }
 
-.transactions--button {
+.transactions-button {
     margin-top: 15px;
     background-color: rgb(252, 222, 75);
     width: 100%;
@@ -16,42 +16,42 @@
 
 }
 
-.transactions--button > a {
+.transactions-button > a {
     text-decoration: none;
     color: black;
 }
 
-.transactions--button:hover {
+.transactions-button:hover {
     background-color: rgba(252, 222, 75, 0.75);
 }
 
-.edit--button {
+.edit-button {
     border: none;
     background-color: rgb(252, 222, 75);
     padding: 10px 10px
 }
 
-.edit--button a {
+.edit-button a {
     text-decoration: none;
     color: black;
 }
 
-.edit--button:hover {
+.edit-button:hover {
     background-color: royalblue;
 }
 
-.delete--button {
+.delete-button {
     border: none;
     background-color: rgb(252, 222, 75);
     padding: 12px 12px
 }
 
-.delete--button a {
+.delete-button a {
     text-decoration: none;
     color: black;
 }
 
-.delete--button:hover {
+.delete-button:hover {
     background-color: red;
 }
 

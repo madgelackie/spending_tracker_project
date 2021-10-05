@@ -4,12 +4,12 @@
 <form action="/transactions", method='post'>
 <div>
     <label for="amount">Amount (¥) : </label> 
-    <input type="number" step="100" id="amount" name="amount">
+    <input class="form--box" type="number" step="100" id="amount" name="amount">
 </div>
 <br>
 <div>
     <label for="spending_type">Choose spending type : </label> 
-    <select id="spending_type" name="spending_type">
+    <select class="form--box" id="spending_type" name="spending_type">
         <option value=""></option>
         {% for tag in all_tags %}
         <option value="{{ tag.id }}">
@@ -21,7 +21,7 @@
 <br>
 <div>
     <label for="merchant">Choose merchant : </label> 
-    <select id="merchant" name="merchant">
+    <select class="form--box" id="merchant" name="merchant">
         <option value=""></option>
         {% for merchant in all_merchants %}
         <option value="{{ merchant.id }}"> {% if merchant.active == True %}{{ merchant.name }}{% endif %}</option>
@@ -31,7 +31,7 @@
 <br>
 <div>
     <label for="date">Date of transaction : </label>
-    <input type="date" id="date" name="date">
+    <input class="form--box" type="date" id="date" name="date">
 </div>
 <br>
 <button class="submit--button" type="submit">SUBMIT</button>
