@@ -1,3 +1,4 @@
+from operator import attrgetter
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -12,8 +13,14 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total_spending()
-    print(transaction_repository.date_sort())
     return render_template("transactions/index.html", transactions=transactions, total_spend=total)
+
+# show all transactions sorted by date
+@transactions_blueprint.route("/transactions/sortby_date")
+def transactions_by_date():
+    transactions = transaction_repository.select_all_by_date()
+    total = transaction_repository.total_spending()
+    return render_template("transactions/date.html", transactions=transactions, total_spend=total)
 
 # takes user to form to add new transaction
 @transactions_blueprint.route("/transactions/new")
@@ -25,7 +32,6 @@ def new_transaction():
 # route after pressing submit on 'add new transaction' page, to pull info from the form
 @transactions_blueprint.route("/transactions", methods=['POST']) 
 def create_transaction():
-    print(request.form)
     amount = request.form['amount']
     tag_id = request.form['spending_type']
     merchant_id = request.form['merchant']
@@ -35,6 +41,7 @@ def create_transaction():
     transaction = Transaction(amount, tag, merchant, date)
     transaction_repository.save(transaction)
     return redirect('/transactions')
+
 
 
 # takes user to form of selected transaction, to edit transaction

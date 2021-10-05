@@ -1,5 +1,6 @@
 from datetime import datetime, date 
 
+
 class Transaction:
 
     def __init__(self, input_amount, tag, merchant, date, id = None):

@@ -1,5 +1,6 @@
 from pdb import run
 from db.run_sql import run_sql
+from operator import attrgetter
 from models.transaction import Transaction
 import repositories.tag_repository as tag_repository
 import repositories.merchant_repository as merchant_repository
@@ -55,14 +56,25 @@ def total_spending():
         total_spend += transaction.amount
     return total_spend
 
-def date_sort():
-    transactions = select_all()
-    dates = []
-    for transaction in transactions:
-        dates.append(transaction.date)
-    sorted_list = sorted(dates)
-    return sorted_list
+# def date_sort():
+#     transactions = select_all()
+#     dates = []
+#     for transaction in transactions:
+#         dates.append(transaction.date)
+#     sorted_list = sorted(dates)
+#     return sorted_list
 
+def select_all_by_date():
+    transactions = []
+    sql = "SELECT * FROM transactions ORDER BY date DESC"
+    results = run_sql(sql)
+    for row in results:
+        tag = tag_repository.select(row['tag_id'])
+        merchant = merchant_repository.select(row['merchant_id'])
+        transaction = Transaction(row['amount'], tag, merchant, row['date'], row['id'])
+        transactions.append(transaction)
+    return transactions
+        
 
 
 
