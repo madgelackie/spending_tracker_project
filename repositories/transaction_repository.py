@@ -85,6 +85,9 @@ def select_all_by_amount():
         transaction = Transaction(row['amount'], tag, merchant, row['date'], row['id'])
         transactions.append(transaction)
     return transactions
+
+
+
         
 
 

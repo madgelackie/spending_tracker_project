@@ -44,5 +44,7 @@
 <button class="transactions--button">
     <a href="/transactions/new">ADD NEW TRANSACTION</a>
 </button>
-
+{% if at_limit == False %}
+<p>you are close to your spending limit</p>
+{% endif %}
 {% endblock %}

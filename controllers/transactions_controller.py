@@ -1,4 +1,3 @@
-from operator import attrgetter
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.transaction import Transaction
@@ -49,8 +48,6 @@ def create_transaction():
     transaction_repository.save(transaction)
     return redirect('/transactions')
 
-
-
 # takes user to form of selected transaction, to edit transaction
 @transactions_blueprint.route("/transactions/<id>/edit", methods=['GET', 'POST'])
 def edit_transaction(id):
@@ -76,5 +73,16 @@ def update_transaction(id):
 def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
+
+@transactions_blueprint.route("/", methods=['POST'])
+def set_limits():
+    print(request.form)
+    spending_limit = request.form['spending-limit']
+    notification_limit = request.form['notification-limit']
+    total_spend = transaction_repository.total_spending()
+    at_limit = False
+    if total_spend >= int(spending_limit) - int(notification_limit):
+        at_limit = True
+    return redirect("/transactions", at_limit=at_limit)
 
 

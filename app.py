@@ -3,7 +3,7 @@ from flask import Flask, render_template
 from controllers.transactions_controller import transactions_blueprint
 from controllers.tags_controller import tags_blueprint
 from controllers.merchants_controller import merchants_blueprint
-
+from controllers.overview_controller import overview_blueprint
 
 app = Flask(__name__)
 
