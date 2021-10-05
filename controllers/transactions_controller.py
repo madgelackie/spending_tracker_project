@@ -80,9 +80,14 @@ def set_limits():
     spending_limit = request.form['spending-limit']
     notification_limit = request.form['notification-limit']
     total_spend = transaction_repository.total_spending()
+    print(total_spend)
     at_limit = False
-    if total_spend >= int(spending_limit) - int(notification_limit):
+    print(at_limit)
+    if total_spend >= int(notification_limit):
         at_limit = True
-    return redirect("/transactions", at_limit=at_limit)
+    print(at_limit)
+    transactions = transaction_repository.select_all()
+    total = transaction_repository.total_spending()
+    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 
