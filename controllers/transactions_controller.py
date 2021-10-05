@@ -12,6 +12,7 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total_spending()
+    print(transaction_repository.date_sort())
     return render_template("transactions/index.html", transactions=transactions, total_spend=total)
 
 # takes user to form to add new transaction
@@ -47,7 +48,6 @@ def edit_transaction(id):
 # updates the task edited in /transactions/edit form
 @transactions_blueprint.route("/transactions/<id>", methods=['POST'])
 def update_transaction(id):
-    print(request.form)
     amount = request.form['amount']
     tag_id = request.form['tag']
     merchant_id = request.form['merchant']
