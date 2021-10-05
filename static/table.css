@@ -15,4 +15,6 @@ th, td {
     background-color: rgb(85, 117, 211);
     color: white;
     font-size: larger;
+    padding: 10px;
+    margin: 15px;
 }

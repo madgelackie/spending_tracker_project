@@ -26,12 +26,12 @@
         </td>
     </tr>
     {% endfor %}
-    <tr></tr>
-    <tr class="spend--box">
-        <td>{{total_spend}}¥</td>
-        <td>TOTAL SPEND</td>
-    </tr>
 </table>
+<div class="spend-box">
+    <p id="box1">{{total_spend}}¥</p>
+    <p id="box2">TOTAL SPEND</p>
+</div>
+
 <button class="transactions--button">
     <a href="/transactions/new">ADD NEW TRANSACTION</a>
 </button>

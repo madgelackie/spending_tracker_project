@@ -47,3 +47,17 @@ body > header {
     margin-right: auto;
     width: 50%;
 }
+
+.spend-box {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    padding-inline: 15px;
+    background-color: rgb(85, 117, 211);
+    color: white;
+    font-size: larger;
+    margin-block-end: 10px;
+}
+
+
+
