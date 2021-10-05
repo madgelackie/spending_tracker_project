@@ -1,21 +1,16 @@
 {% extends "base.html" %}
-{% block home %}
-<div class="wrap">
-    <form action="/", method='post'>
-    <img class="home-image" src="static/images/ash.jpeg" alt="Ash and Pikachu">
-    <div class="home-content">
-        <div>
-            <label for="spending-limit">Set your spending limit (¥) : </label> 
-            <input class="form--box" type="number" step="100" id="spending-limit" name="spending-limit" placeholder="select amount">
-        </div>
-        <br>
-        <div>
-            <label for="notification-limit">Notifiation point (i.e when you want us to notify you) (¥) :</label> 
-            <input class="form--box" type="number" step="100" id="notification-limit" name="notification-limit" placeholder="select amount">    
-        </div>
-        <br>
-        <button class="submit--button" type="submit">SUBMIT</button>
+{% block content %}
+<div class="home-page">
+    <div>
+        <img src="static/images/ash.jpeg" alt="Ash and Pikachu">
     </div>
-    </form>
+    <div id="text">
+        <h3>Welcome, Pokémon Trainer</h3>
+        <h3>Use this app to track your spending</h4>
+        <h3>Click below to get started</h3>
+    </div>
 </div>
+    <button class="transactions-button">
+            <a href="/limits">EDIT SPENDING LIMITS</a>
+        </button>
 {% endblock %}

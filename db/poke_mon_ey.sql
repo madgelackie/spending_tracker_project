@@ -1,6 +1,14 @@
 DROP TABLE transactions;
+DROP TABLE limits;
 DROP TABLE tags;
 DROP TABLE merchants;
+
+
+CREATE TABLE limits (
+    id SERIAL PRIMARY KEY,
+    spending_limit INT,
+    notification_point INT
+);
 
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,

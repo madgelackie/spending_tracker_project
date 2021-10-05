@@ -74,20 +74,20 @@ def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/", methods=['POST'])
-def set_limits():
-    print(request.form)
-    spending_limit = request.form['spending-limit']
-    notification_limit = request.form['notification-limit']
-    total_spend = transaction_repository.total_spending()
-    print(total_spend)
-    at_limit = False
-    print(at_limit)
-    if total_spend >= int(notification_limit):
-        at_limit = True
-    print(at_limit)
-    transactions = transaction_repository.select_all()
-    total = transaction_repository.total_spending()
-    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
+# @transactions_blueprint.route("/", methods=['POST'])
+# def set_limits():
+#     print(request.form)
+#     spending_limit = request.form['spending-limit']
+#     notification_limit = request.form['notification-limit']
+#     total_spend = transaction_repository.total_spending()
+#     print(total_spend)
+#     at_limit = False
+#     print(at_limit)
+#     if total_spend >= int(notification_limit):
+#         at_limit = True
+#     print(at_limit)
+#     transactions = transaction_repository.select_all()
+#     total = transaction_repository.total_spending()
+#     return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 

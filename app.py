@@ -4,12 +4,16 @@ from controllers.transactions_controller import transactions_blueprint
 from controllers.tags_controller import tags_blueprint
 from controllers.merchants_controller import merchants_blueprint
 from controllers.overview_controller import overview_blueprint
+from controllers.limits_controller import limits_blueprint
 
 app = Flask(__name__)
 
 app.register_blueprint(transactions_blueprint)
 app.register_blueprint(tags_blueprint)
 app.register_blueprint(merchants_blueprint)
+app.register_blueprint(limits_blueprint)
+app.register_blueprint(overview_blueprint)
+
 
 @app.route('/')
 def home():
