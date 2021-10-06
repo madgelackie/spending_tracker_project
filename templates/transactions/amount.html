@@ -15,7 +15,7 @@
     </tr>
     {% for transaction in transactions %}
     <tr>
-        <td>{{ transaction.amount }}¥</td>
+        <td>¥{{ transaction.amount }}</td>
         <td>{{ transaction.tag.spending_type }}</td>
         <td>{{ transaction.merchant.name }}</td>
         <td>{{ transaction.date }}</td>
@@ -33,7 +33,7 @@
     {% endfor %}
 </table>
 <div class="spend-box">
-    <p id="box1">{{total_spend}}¥</p>
+    <p id="box1">¥{{total_spend}}</p>
     <p id="box2">TOTAL SPEND</p>
     
 </div>

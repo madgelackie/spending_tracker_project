@@ -84,6 +84,28 @@ body > header {
     justify-content: space-around;
 }
 
+.front-page-spend {
+    display: flex;
+    height: 40px; 
+    justify-content: space-around;
+    padding: 15px;
+    background-color: rgb(85, 117, 211);
+    color: white;
+    font-size: larger;
+    margin-top: 10px;
+}
+
+.front-page-limit {
+    display: flex;
+    height: 30px; 
+    justify-content: space-around;
+    padding: 15px;
+    background-color:rgba(14, 196, 57, 0.995);
+    color: white;
+    font-size: larger;
+    margin-top: 10px;
+
+}
 
 
 
