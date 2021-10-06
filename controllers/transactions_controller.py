@@ -13,7 +13,12 @@ transactions_blueprint = Blueprint("transactions", __name__)
 def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total_spending()
-    return render_template("transactions/index.html", transactions=transactions, total_spend=total)
+    limit = limit_repository.select_last()
+    at_limit = False
+    if total >= limit.notification_point:
+        at_limit = True
+    print(at_limit)
+    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 # show all transactions sorted by date
 @transactions_blueprint.route("/transactions/sortby_date")
@@ -75,16 +80,16 @@ def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/", methods=['POST'])
-def limit_notification():
-    total_spend = transaction_repository.total_spending()
-    limit = limit_repository.select_last()
-    at_limit = False
-    if total_spend >= limit.notification_point:
-        at_limit = True
-    print(at_limit)
-    transactions = transaction_repository.select_all()
-    total = transaction_repository.total_spending()
-    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
+# @transactions_blueprint.route("/", methods=['POST'])
+# def limit_notification():
+#     total_spend = transaction_repository.total_spending()
+#     limit = limit_repository.select_last()
+#     at_limit = False
+#     if total_spend >= limit.notification_point:
+#         at_limit = True
+#     print(at_limit)
+#     transactions = transaction_repository.select_all()
+#     total = transaction_repository.total_spending()
+#     return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 

@@ -38,8 +38,8 @@ def select_all():
 
 def select_last():
     limit = None
-    sql = "SELECT * FROM limits WHERE id=(SELECT max(id) FROM limits)"
-    result = run_sql(sql)
+    sql = "SELECT * FROM limits ORDER BY id DESC limit 1"
+    result = run_sql(sql)[0]
     if result is not None:
         limit = Limit(result['spending_limit'], result['notification_point'], result['id'])
     return limit
