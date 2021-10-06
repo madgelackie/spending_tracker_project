@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if at_limit == True %}
+{% if near_limit == True %}
 <p class="notification">You are close to your spending limit!</p>
 {% endif %}
 {% if over_limit == True %}

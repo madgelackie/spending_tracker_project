@@ -14,20 +14,20 @@ def transactions():
     transactions = transaction_repository.select_all()
     total = transaction_repository.total_spending()
     limit = limit_repository.select_last()
-    at_limit = False
+    near_limit = False
     if total >= limit.notification_point:
-        at_limit = True
+        near_limit = True
     over_limit = False
     if total > limit.spending_limit:
-        at_limit = False
+        near_limit = False
         over_limit = True
     on_limit = False
     if total == limit.spending_limit:
-        at_limit = False
+        near_limit = False
         over_limit = False
         on_limit = True
-    print(at_limit)
-    return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit, over_limit=over_limit, on_limit=on_limit)
+    print(near_limit)
+    return render_template("transactions/index.html", transactions=transactions, total_spend=total, near_limit=near_limit, over_limit=over_limit, on_limit=on_limit)
 
 # show all transactions sorted by date
 @transactions_blueprint.route("/transactions/sortby_date")

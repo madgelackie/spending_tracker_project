@@ -4,7 +4,7 @@
 <form action="/transactions/{{ transaction.id }}", method='post'>
     <div>
         <label for="amount">Amount (¥) : </label> 
-        <input type="number" min="0" step="100" id="amount" name="amount" value="{{transaction.amount}}">
+        <input type="number" min="0" step="100" id="amount" name="amount" value="{{transaction.amount}}" required>
     </div>
     <br>
     <div>
@@ -29,10 +29,10 @@
     <br>
     <div>
         <label for="date">Update date of transaction : </label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" required>
     </div>
     <br>
-    <button type="submit">UPDATE</button>
+    <button class="submit--button" type="submit">UPDATE</button>
 
 
 

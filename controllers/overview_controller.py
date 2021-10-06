@@ -8,6 +8,7 @@ overview_blueprint = Blueprint("overview", __name__)
 @overview_blueprint.route("/")
 def show_overview():
     limit = limit_repository.select_last()
+    print (limit)
     total = transaction_repository.total_spending()
     print (limit.spending_limit)
     print (total)
