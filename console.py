@@ -1,15 +1,21 @@
 import pdb
+from models.limit import Limit
 from models.merchant import Merchant
 from models.tag import Tag
 from models.transaction import Transaction
 
+
+import repositories.limit_repository as limit_repository
 import repositories.merchant_repository as merchant_repository
 import repositories.tag_repository as tag_repository
 import repositories.transaction_repository as transaction_repository
+import repositories.limit_repository as limit_repository
 
+limit_repository.delete_all()
 tag_repository.delete_all()
 merchant_repository.delete_all()
 transaction_repository.delete_all()
+
 
 tag1 = Tag('food')
 tag_repository.save(tag1)
@@ -25,7 +31,6 @@ tag_repository.save(tag4)
 
 tag5 = Tag('clothing', False)
 tag_repository.save(tag5)
-
 
 merchant1 = Merchant('Supermercado', True)
 merchant_repository.save(merchant1)
@@ -50,6 +55,9 @@ transaction_repository.save(transaction2)
 
 transaction3 = Transaction(1000, tag4, merchant3, '20210629')
 transaction_repository.save(transaction3)
+
+limit1 = Limit(10000, 9000)
+limit_repository.save(limit1)
 
 
 pdb.set_trace()
