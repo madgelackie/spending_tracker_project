@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.limit import Limit
 import repositories.limit_repository as limit_repository
+import repositories.transaction_repository as transaction_repository
 
 limits_blueprint = Blueprint("limits", __name__)
 
@@ -21,7 +22,10 @@ def set_limits():
     notification_point = request.form['notification-point']
     limit = Limit(spending_limit, notification_point)
     limit_repository.save(limit)
-    return render_template("/limits/index.html", limit=limit)
+    total = transaction_repository.total_spending()
+    print (limit.spending_limit)
+    print (total)
+    return render_template("/index.html", total_spend=total, limit=limit)
 
 
 

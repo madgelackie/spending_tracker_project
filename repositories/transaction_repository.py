@@ -56,13 +56,6 @@ def total_spending():
         total_spend += transaction.amount
     return total_spend
 
-# def date_sort():
-#     transactions = select_all()
-#     dates = []
-#     for transaction in transactions:
-#         dates.append(transaction.date)
-#     sorted_list = sorted(dates)
-#     return sorted_list
 
 def select_all_by_date():
     transactions = []
