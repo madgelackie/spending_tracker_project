@@ -17,14 +17,11 @@ def new_limit():
 
 @limits_blueprint.route("/limits", methods=['POST'])
 def set_limits():
-    print(request.form)
     spending_limit = request.form['spending-limit']
     notification_point = request.form['notification-point']
     limit = Limit(spending_limit, notification_point)
     limit_repository.save(limit)
     total = transaction_repository.total_spending()
-    print (limit.spending_limit)
-    print (total)
     return render_template("/index.html", total_spend=total, limit=limit)
 
 

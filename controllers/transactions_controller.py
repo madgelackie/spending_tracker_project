@@ -8,7 +8,7 @@ import repositories.limit_repository as limit_repository
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
-# show all transactions
+# show all transactions with conditional loops to manage spending limit notificication feature
 @transactions_blueprint.route("/transactions")
 def transactions():
     transactions = transaction_repository.select_all()
@@ -26,7 +26,6 @@ def transactions():
         near_limit = False
         over_limit = False
         on_limit = True
-    print(near_limit)
     return render_template("transactions/index.html", transactions=transactions, total_spend=total, near_limit=near_limit, over_limit=over_limit, on_limit=on_limit)
 
 # show all transactions sorted by date
@@ -88,17 +87,5 @@ def update_transaction(id):
 def delete_transaction(id):
     transaction_repository.delete(id)
     return redirect("/transactions")
-
-# @transactions_blueprint.route("/", methods=['POST'])
-# def limit_notification():
-#     total_spend = transaction_repository.total_spending()
-#     limit = limit_repository.select_last()
-#     at_limit = False
-#     if total_spend >= limit.notification_point:
-#         at_limit = True
-#     print(at_limit)
-#     transactions = transaction_repository.select_all()
-#     total = transaction_repository.total_spending()
-#     return render_template("transactions/index.html", transactions=transactions, total_spend=total, at_limit=at_limit)
 
 
