@@ -27,7 +27,7 @@ How to run
 1. Install Python if you don't already have it.  You can get it from here: https://www.python.org/downloads/
 
 2. In the terminal, install Flask:
-```pip3 install Flask```
+```pip3 install Flask==2.0.1```
 
 3. Whilst in the app's directory, run:
 ```flask run```
