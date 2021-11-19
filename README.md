@@ -20,7 +20,7 @@ Additional functionailty was added for sorting transactions by amount and by dat
 The intended user is a Pokémon traniner, just to keep it a bit more interesting 😄
 
 Ideally I would go back in to refactor some of the code, for example in repositories/limit_repository.py, where the spending limit is added to the database and then the most recent db entry is used in rendering the template (templates/transactions/index.html) - it would have been cleaner to clear the spending limit table before adding a new spending limit, as there is only ever a need for one spending limit and no need for historic information in this context. 
-<../repositories/limit_repository.py>
+
 
 
 How to run
